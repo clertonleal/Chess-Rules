@@ -6,10 +6,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.chess.rules.domain.Board;
+import com.chess.rules.domain.PieceColor;
 import com.chess.rules.domain.Position;
-import com.chess.rules.piece.AbstractPiece.PieceColor;
 
-public class PieceKnightTest extends PieceTest{
+public class PieceKnightTest extends AbstractPieceTest{
 
 	@Before
 	public void setUp() throws Exception {

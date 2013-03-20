@@ -3,6 +3,7 @@ package com.chess.rules.piece;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.chess.rules.domain.PieceColor;
 import com.chess.rules.domain.Position;
 import com.chess.rules.domain.Row;
 

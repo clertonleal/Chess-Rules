@@ -1,7 +1,7 @@
 package com.chess.rules.util;
 
+import com.chess.rules.domain.PieceColor;
 import com.chess.rules.domain.Row;
-import com.chess.rules.piece.AbstractPiece.PieceColor;
 import com.chess.rules.piece.Piece;
 import com.chess.rules.piece.PieceBishop;
 import com.chess.rules.piece.PieceKing;

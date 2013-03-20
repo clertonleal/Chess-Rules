@@ -4,60 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.chess.rules.domain.Board;
+import com.chess.rules.domain.HorizontalMove;
+import com.chess.rules.domain.PieceColor;
 import com.chess.rules.domain.Position;
 import com.chess.rules.domain.Row;
+import com.chess.rules.domain.VerticalMove;
 import com.chess.rules.util.PositionUtil;
 
 public abstract class AbstractPiece implements Piece{
 
-	public enum HorizontalMove{
-		LEFT(-1),
-		RIGHT(1),
-		STOPED(0)
-		;
-		
-		private int value;
-		
-		private HorizontalMove(final int value) {
-			this.value = value;
-		}
-		
-		public int getValue(){
-			return this.value;
-		}
-	}
-	
-	public enum VerticalMove{
-		UP(1),
-		DOWN(-1),
-		STOPED(0)
-		;
-
-		private int value;
-		
-		private VerticalMove(final int value) {
-			this.value = value;
-		}
-		
-		public int getValue(){
-			return this.value;
-		}
-	}
-	
-	public enum PieceColor{
-		WHITE,
-		BLACK;
-	}
-	
-	public enum PieceType{
-		PAWN,
-		KNIGHT,
-		BISHOP,
-		ROOK,
-		QUEEN,
-		KING;
-	}
-	
 	private Row row;
 	private PieceColor pieceColor;
 	private boolean hasMoved;
@@ -73,6 +28,7 @@ public abstract class AbstractPiece implements Piece{
 		if(row == null){
 			return false;
 		}
+		
 		return true;
 	}
 	
@@ -84,9 +40,16 @@ public abstract class AbstractPiece implements Piece{
 		if(!this.hasMoved){
 			this.hasMoved = true;
 		}
+		
 		this.row.setPiece(null);
 	}
 	
+	/**
+	 * @param horizontal - Represents the horizontal direction of the movement.
+	 * @param vertical - Represents the vertical direction of the movement.
+	 * @param inLine - Represents if the movement will be only for the nears rows, or for all possible rows in line.
+	 * @return - The list of positions where is possible to move.
+	 */
 	private List<Position> getPositions(final HorizontalMove horizontal, final VerticalMove vertical, final boolean inLine) {
 		final List<Position> positions = new ArrayList<Position>();
 		int xCoordenate = getRow().getPosition().getX();
@@ -95,6 +58,7 @@ public abstract class AbstractPiece implements Piece{
 		xCoordenate += horizontal.getValue();
 		yCoordenate += vertical.getValue();
 		boolean inLineAux = true;
+		
 		while(PositionUtil.isValidPosition(xCoordenate, yCoordenate) && inLineAux){
 			if(Board.getRows()[xCoordenate][yCoordenate].isBusy()){
 				if(getPieceColor() != Board.getRows()[xCoordenate][yCoordenate].getPiece().getPieceColor()){
@@ -107,6 +71,7 @@ public abstract class AbstractPiece implements Piece{
 			yCoordenate += vertical.getValue();
 			inLineAux = inLine;
 		}
+		
 		return positions;
 	}
 	

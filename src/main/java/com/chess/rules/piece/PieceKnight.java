@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.chess.rules.domain.Board;
+import com.chess.rules.domain.HorizontalMove;
+import com.chess.rules.domain.PieceColor;
 import com.chess.rules.domain.Position;
 import com.chess.rules.domain.Row;
+import com.chess.rules.domain.VerticalMove;
 import com.chess.rules.util.PositionUtil;
 
 public class PieceKnight extends AbstractPiece{

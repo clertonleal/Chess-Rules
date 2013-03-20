@@ -1,15 +1,15 @@
 package com.chess.rules.piece;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.chess.rules.domain.Board;
+import com.chess.rules.domain.PieceColor;
 import com.chess.rules.domain.Position;
-import com.chess.rules.piece.AbstractPiece.PieceColor;
 
-public class PieceQueenTest extends PieceTest{
+public class PieceQueenTest extends AbstractPieceTest{
 
 	@Before
 	public void setUp() throws Exception {
