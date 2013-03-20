@@ -63,14 +63,14 @@ public class PieceKnight extends AbstractPiece{
 	}
 
 	private Position getHorizontalKnightPosition(final Position piecePosition, final HorizontalMove horizontal, final VerticalMove vertical) {
-		int x = piecePosition.getX() + horizontal.getValue()*2;
-		int y = piecePosition.getY() + vertical.getValue();
+		final int x = piecePosition.getX() + horizontal.getValue()*2;
+		final int y = piecePosition.getY() + vertical.getValue();
 		return new Position(x, y);
 	}
 	
 	private Position getVerticalKnightPosition(final Position piecePosition, final VerticalMove vertical, final HorizontalMove horizontal) {
-		int y = piecePosition.getY() + vertical.getValue()*2;
-		int x = piecePosition.getX() + horizontal.getValue();
+		final int y = piecePosition.getY() + (vertical.getValue() * 2);
+		final int x = piecePosition.getX() + horizontal.getValue();
 		return new Position(x, y);
 	}
 	

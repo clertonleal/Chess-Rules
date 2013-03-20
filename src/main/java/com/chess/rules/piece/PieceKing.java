@@ -1,6 +1,5 @@
 package com.chess.rules.piece;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.chess.rules.domain.PieceColor;
@@ -15,8 +14,7 @@ public class PieceKing extends AbstractPiece{
 
 	@Override
 	public List<Position> getPossiblePositions() {
-		final List<Position> positions = new ArrayList<Position>();
-		positions.addAll(getCrossPositions(false));
+		final List<Position> positions = getCrossPositions(false);
 		positions.addAll(getDiagonalPositions(false));
 		return positions;
 	}

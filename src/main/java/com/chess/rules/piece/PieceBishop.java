@@ -1,6 +1,5 @@
 package com.chess.rules.piece;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.chess.rules.domain.PieceColor;
@@ -15,8 +14,6 @@ public class PieceBishop extends AbstractPiece{
 
 	@Override
 	public List<Position> getPossiblePositions() {
-		final List<Position> positions = new ArrayList<Position>();
-		positions.addAll(getDiagonalPositions(true));
-		return positions;
+		return getDiagonalPositions(true);
 	}
 }

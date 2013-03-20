@@ -18,15 +18,15 @@ public class PiecePawn extends AbstractPiece{
 
 	@Override
 	public List<Position> getPossiblePositions() {
-		final List<Position> positions = new ArrayList<Position>();
 		int movement = 0;
+		
 		if(PieceColor.WHITE == getPieceColor()){
-			movement = 1;
+			movement = 1; //Move to up of board.
 		}else if(PieceColor.BLACK == getPieceColor()){
-			movement = -1;
+			movement = -1; //Move to down of board.
 		}
-		positions.addAll(determineFrontPawnPossiblePositions(movement));
-		return positions;
+		
+		return determineFrontPawnPossiblePositions(movement);
 	}
 
 	private List<Position> determineFrontPawnPossiblePositions(final int movement) {
@@ -37,7 +37,8 @@ public class PiecePawn extends AbstractPiece{
 		
 		if(!Board.getRows()[x][y + movement].isBusy() && PositionUtil.isValidPosition(x, y + movement)){
 			positions.add(new Position(x, y + movement));
-			if(!hasMoved()){
+			
+			if(!hasMoved()){ //Determine the initial move of pawn
 				if(!Board.getRows()[x][y + (movement*2)].isBusy()){
 					positions.add(new Position(x, y + (movement*2)));
 				}
@@ -49,7 +50,10 @@ public class PiecePawn extends AbstractPiece{
 			if(horizontal == HorizontalMove.STOPED){
 				continue;
 			}
+			
 			rowAux = Board.getRows()[x + horizontal.getValue()][y + movement];
+			
+			// In the case of an opponent's piece are in diagonal
 			if(rowAux.isBusy() && rowAux.getPiece().getPieceColor() != getPieceColor()){
 				positions.add(new Position(x + horizontal.getValue(), y + movement));
 			}
